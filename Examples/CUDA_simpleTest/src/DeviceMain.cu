@@ -34,9 +34,11 @@ float squareArray(int N) {
   	// Retrieve result from device and store it in host array
   	cudaMemcpy(a_h, a_d, sizeof(float)*N, cudaMemcpyDeviceToHost);
 
-  	// Cleanup
+  	return a_h[N-1];
+  
+    // Cleanup
   	free(a_h);
   	cudaFree(a_d);
 
-    return a_h[N-1];
+    //return a_h[N-1]; //the varibles should be returned before freed
 }
